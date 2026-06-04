@@ -1,0 +1,133 @@
+{
+  "path": "/snapshots/1780530369_kafka_1c.json",
+  "summary": {
+    "elapsed_sec": 43.52,
+    "totals": {
+      "hits": 2130,
+      "misses": 289,
+      "errors": 0,
+      "total_requests": 2419
+    },
+    "hit_rate": 0.8805,
+    "miss_rate": 0.1195,
+    "throughput_qps_total": 55.58,
+    "throughput_qps_recent_10s": 66.0,
+    "latency_ms_hit": {
+      "p50": 0.216,
+      "p95": 0.322,
+      "p99": 0.48
+    },
+    "latency_ms_miss": {
+      "p50": 91.459,
+      "p95": 272.112,
+      "p99": 313.319
+    },
+    "latency_ms_all": {
+      "p50": 0.224,
+      "p95": 96.459,
+      "p99": 249.524
+    },
+    "mean_t_cache_ms": 0.229,
+    "mean_t_db_ms": 111.83,
+    "cache_efficiency": 98.268,
+    "eviction": {
+      "total_evicted": 0,
+      "rate_per_min": 0.0
+    },
+    "async_kpis": {
+      "processed_total": 2419,
+      "recovered_total": 0,
+      "retried_total": 0,
+      "dlq_total": 0,
+      "throughput_processed_qps_total": 55.58,
+      "throughput_processed_qps_recent_10s": 66.0,
+      "latency_e2e_ms": {
+        "p50": 5130.65,
+        "p95": 8002.574,
+        "p99": 8327.998
+      },
+      "retry_rate": 0.0,
+      "recovery_rate": null,
+      "dlq_rate": 0.0
+    },
+    "cache_redis_stats": {
+      "policy": "LRU",
+      "used_memory": 1254848,
+      "used_memory_human": "1.20M",
+      "maxmemory": 209715200,
+      "n_keys": 289,
+      "evicted_keys": 0,
+      "keyspace_hits": 8627,
+      "keyspace_misses": 3247
+    },
+    "queue_health": {
+      "backlog_by_topic": {
+        "consultas_principales": 0,
+        "consultas_reintentos": 0
+      },
+      "backlog_total": 0,
+      "peak_backlog": 461,
+      "recovery_time_sec": 21.52,
+      "draining": false
+    },
+    "by_query": {
+      "Q1": {
+        "hits": 1276,
+        "misses": 85,
+        "total": 1361,
+        "hit_rate": 0.9375,
+        "p50_ms": 0.217,
+        "p95_ms": 47.969,
+        "p99_ms": 102.963
+      },
+      "Q2": {
+        "hits": 226,
+        "misses": 50,
+        "total": 276,
+        "hit_rate": 0.8188,
+        "p50_ms": 0.227,
+        "p95_ms": 95.317,
+        "p99_ms": 112.353
+      },
+      "Q3": {
+        "hits": 416,
+        "misses": 61,
+        "total": 477,
+        "hit_rate": 0.8721,
+        "p50_ms": 0.227,
+        "p95_ms": 87.101,
+        "p99_ms": 115.485
+      },
+      "Q4": {
+        "hits": 70,
+        "misses": 63,
+        "total": 133,
+        "hit_rate": 0.5263,
+        "p50_ms": 0.418,
+        "p95_ms": 300.641,
+        "p99_ms": 324.642
+      },
+      "Q5": {
+        "hits": 142,
+        "misses": 30,
+        "total": 172,
+        "hit_rate": 0.8256,
+        "p50_ms": 0.236,
+        "p95_ms": 100.57,
+        "p99_ms": 121.169
+      }
+    },
+    "label": "kafka_1c",
+    "extra": {
+      "mode": "kafka",
+      "distribution": "zipf",
+      "rate_qps": 60.0,
+      "duration_sec": 40.0,
+      "zipf_s": 1.5,
+      "concurrency": 16,
+      "seed": 42,
+      "label": "kafka_1c"
+    },
+    "snapshot_ts": 1780530369.7116673
+  }
+}
