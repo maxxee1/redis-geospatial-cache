@@ -1,7 +1,7 @@
 services:
   kafka:
     image: apache/kafka:3.9.0
-    container_name: tarea3_kafka
+    container_name: tarea2_kafka
     ports:
       - "${KAFKA_PORT_HOST:-9092}:9092"
     environment:
