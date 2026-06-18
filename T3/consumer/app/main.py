@@ -119,6 +119,7 @@ def _process(msg_value: str, http: httpx.Client, producer: Producer):
             "event": "processed",
             "query_type": query_type,
             "from_retry": from_retry,
+            "retry_count": retry_count,
             "cache": cache_state,
             "end_to_end_ms": end_to_end_ms,
             "ts": time.time(),
