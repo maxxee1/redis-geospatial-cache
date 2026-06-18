@@ -88,6 +88,7 @@ class RunRequest(BaseModel):
     seed: int = 42
     spike_at_sec: float | None = None
     spike_rate_qps: float | None = Field(None, gt=0)
+    label: str = "exp"
 
 
 def _build_query(zone_selector, query_selector, conf_selector, bin_selector,
