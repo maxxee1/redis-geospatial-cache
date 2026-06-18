@@ -54,7 +54,7 @@ def wait_for_services(retries=90, interval=1.0):
 def scale_consumers(n: int):
     print(f"  Escalando consumer={n}...", flush=True)
     subprocess.run(
-        ["docker", "compose", "up", "-d", "--no-recreate", "--scale", f"consumer={n}"],
+        ["docker-compose", "up", "-d", "--no-recreate", "--scale", f"consumer={n}"],
         cwd=PROJECT_ROOT, check=True,
     )
     time.sleep(8)
