@@ -12,8 +12,8 @@ import numpy as np
 import httpx
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
-from confluent_kafka import Consumer, TopicPartition
-
+from confluent_kafka import Consumer, TopicPartition, Producer
+from confluent_kafka.admin import AdminClient, NewTopic
 
 #  ============= configuracion global ============= #
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [metrics] %(message)s")
@@ -31,6 +31,7 @@ TOPIC_MAIN = os.getenv("TOPIC_MAIN", "consultas_principales")
 TOPIC_RETRY = os.getenv("TOPIC_RETRY", "consultas_reintentos")
 TOPIC_DLQ = os.getenv("TOPIC_DLQ", "consultas_dlq")
 BACKLOG_TOPICS = [TOPIC_MAIN, TOPIC_RETRY]
+TOPIC_METRICS = os.getenv("TOPIC_METRICS", "metrics-topic")
 
 
 #  ============= clase principal de recoleccion de metricas ============= #
@@ -341,16 +342,56 @@ class KafkaMonitor:
             }
 
 
+
+def ensure_metrics_topic():
+    admin = AdminClient({"bootstrap.servers": KAFKA_BOOTSTRAP})
+    fs = admin.create_topics([NewTopic(TOPIC_METRICS, num_partitions=3, replication_factor=1)])
+    for t, f in fs.items():
+        try:
+            f.result()
+            log.info(f"Tópico creado: {t}")
+        except Exception as e:
+            log.info(f"Tópico {t}: {e}")
+
+def _publish_metric(ev: dict):
+    if metrics_producer is None or ev.get("event") != "processed":
+        return
+    record = {
+        "ts": ev.get("ts") or time.time(),
+        "query_type": (ev.get("query_type") or "UNK").upper(),
+        "cache": ev.get("cache"),
+        "latency_ms": ev.get("end_to_end_ms"),
+        "retry_count": int(ev.get("retry_count") or 0),
+        "status": "processed",
+    }
+    try:
+        metrics_producer.produce(TOPIC_METRICS, value=json.dumps(record))
+        metrics_producer.poll(0)
+    except BufferError:
+        metrics_producer.poll(0.1)
+
+
 metrics = Metrics()
 monitor = KafkaMonitor()
 http: httpx.AsyncClient | None = None
+metrics_producer: Producer | None = None
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global http
+    global http, metrics_producer
     SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
     http = httpx.AsyncClient(timeout=5.0)
+
+    for _ in range(30):
+        try:
+            ensure_metrics_topic()
+            break
+        except Exception as e:
+            log.info(f"Kafka aún no listo ({e}); reintentando...")
+            time.sleep(2)
+    metrics_producer = Producer({"bootstrap.servers": KAFKA_BOOTSTRAP, "linger.ms": 5})
+
     try:
         monitor.start()
     except Exception as e:
@@ -377,6 +418,7 @@ class Event(BaseModel):
     ts: float | None = None
     end_to_end_ms: float | None = None
     from_retry: bool | None = None
+    retry_count: int | None = None
     cache: str | None = None
 
 
@@ -389,6 +431,7 @@ async def health():
 @app.post("/event")
 async def event(ev: Event):
     metrics.record(ev.dict())
+    _publish_metric(ev.dict())
     return {"ok": True}
 
 #  ============= estadisticas del servicio de cache ============= #
