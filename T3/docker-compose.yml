@@ -163,3 +163,21 @@ services:
         condition: service_started
       kafka:
         condition: service_healthy
+  spark:
+      image: apache/spark:3.5.3-python3
+      container_name: t3_spark
+      depends_on:
+        kafka:
+          condition: service_healthy
+      restart: on-failure
+      volumes:
+        - ./spark/jobs:/opt/spark/jobs
+      entrypoint:
+        - /opt/spark/bin/spark-submit
+        - --master
+        - "local[*]"
+        - --packages
+        - org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3
+        - --conf
+        - spark.jars.ivy=/tmp/.ivy2
+        - /opt/spark/jobs/metrics_stream.py
