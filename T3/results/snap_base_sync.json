@@ -1,0 +1,133 @@
+{
+  "path": "/snapshots/1781748857_base_sync.json",
+  "summary": {
+    "elapsed_sec": 43.24,
+    "totals": {
+      "hits": 1757,
+      "misses": 300,
+      "errors": 0,
+      "total_requests": 2057
+    },
+    "hit_rate": 0.8542,
+    "miss_rate": 0.1458,
+    "throughput_qps_total": 47.58,
+    "throughput_qps_recent_10s": 41.5,
+    "latency_ms_hit": {
+      "p50": 0.572,
+      "p95": 1.148,
+      "p99": 1.522
+    },
+    "latency_ms_miss": {
+      "p50": 756.224,
+      "p95": 4192.98,
+      "p99": 4632.718
+    },
+    "latency_ms_all": {
+      "p50": 0.601,
+      "p95": 932.438,
+      "p99": 3933.554
+    },
+    "mean_t_cache_ms": 0.638,
+    "mean_t_db_ms": 1136.22,
+    "cache_efficiency": 969.965,
+    "eviction": {
+      "total_evicted": 0,
+      "rate_per_min": 0.0
+    },
+    "async_kpis": {
+      "processed_total": 0,
+      "recovered_total": 0,
+      "retried_total": 0,
+      "dlq_total": 0,
+      "throughput_processed_qps_total": 0.0,
+      "throughput_processed_qps_recent_10s": 0,
+      "latency_e2e_ms": {
+        "p50": null,
+        "p95": null,
+        "p99": null
+      },
+      "retry_rate": null,
+      "recovery_rate": null,
+      "dlq_rate": null
+    },
+    "cache_redis_stats": {
+      "policy": "LRU",
+      "used_memory": 1249600,
+      "used_memory_human": "1.19M",
+      "maxmemory": 209715200,
+      "n_keys": 268,
+      "evicted_keys": 0,
+      "keyspace_hits": 9589,
+      "keyspace_misses": 1459
+    },
+    "queue_health": {
+      "backlog_by_topic": {
+        "consultas_principales": 0,
+        "consultas_reintentos": 0
+      },
+      "backlog_total": 0,
+      "peak_backlog": 0,
+      "recovery_time_sec": null,
+      "draining": false
+    },
+    "by_query": {
+      "Q1": {
+        "hits": 1046,
+        "misses": 96,
+        "total": 1142,
+        "hit_rate": 0.9159,
+        "p50_ms": 0.586,
+        "p95_ms": 751.013,
+        "p99_ms": 2213.153
+      },
+      "Q2": {
+        "hits": 179,
+        "misses": 51,
+        "total": 230,
+        "hit_rate": 0.7783,
+        "p50_ms": 0.603,
+        "p95_ms": 1420.786,
+        "p99_ms": 4165.445
+      },
+      "Q3": {
+        "hits": 360,
+        "misses": 64,
+        "total": 424,
+        "hit_rate": 0.8491,
+        "p50_ms": 0.616,
+        "p95_ms": 889.442,
+        "p99_ms": 3875.49
+      },
+      "Q4": {
+        "hits": 54,
+        "misses": 60,
+        "total": 114,
+        "hit_rate": 0.4737,
+        "p50_ms": 185.934,
+        "p95_ms": 3773.582,
+        "p99_ms": 4235.267
+      },
+      "Q5": {
+        "hits": 118,
+        "misses": 29,
+        "total": 147,
+        "hit_rate": 0.8027,
+        "p50_ms": 0.623,
+        "p95_ms": 2606.761,
+        "p99_ms": 4597.424
+      }
+    },
+    "label": "base_sync",
+    "extra": {
+      "mode": "sync",
+      "distribution": "zipf",
+      "rate_qps": 60.0,
+      "duration_sec": 40.0,
+      "zipf_s": 1.5,
+      "concurrency": 16,
+      "seed": 42,
+      "label": "base_sync"
+    },
+    "snapshot_ts": 1781748857.7857656
+  }
+}
