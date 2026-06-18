@@ -1,6 +1,6 @@
 import os
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import from_json, col
+from pyspark.sql.functions import from_json, col, window, count, avg, expr, when
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType, IntegerType
 
 BOOTSTRAP = os.getenv("KAFKA_BOOTSTRAP", "kafka:9092")
@@ -30,10 +30,31 @@ schema = StructType([
 parsed = raw.select(
     from_json(
         col("value").cast("string"), 
-        schema).
-     alias("d")
+        schema
+    ).alias("d")
 ).select("d.*")
 
-q = (parsed.writeStream.format("console").option("truncate", False).start())
+events = parsed.withColumn("event_time", col("ts").cast("timestamp"))
 
+agg = (events
+       .withWatermark("event_time", "2 minutes")
+       .groupBy(window(col("event_time"), "1 minute", "30 seconds"))
+       .agg(
+           count("*").alias("throughput_per_min"),
+           expr("percentile_approx(latency_ms, 0.5)").alias("p50_ms"),
+           expr("percentile_approx(latency_ms, 0.95)").alias("p95_ms"),
+           avg(when(col("cache") == "HIT", 1.0).otherwise(0.0)).alias("hit_rate"),
+           avg(when(col("retry_count") > 0, 1.0).otherwise(0.0)).alias("retry_rate"),
+       )
+       .select(
+           col("window.start").alias("window_start"),
+           col("window.end").alias("window_end"),
+           "throughput_per_min", "p50_ms", "p95_ms", "hit_rate", "retry_rate",
+       ))
+
+q = (agg.writeStream
+     .format("console").outputMode("update").option("truncate", False)
+     .option("checkpointLocation", "/tmp/spark-checkpoints/metrics")
+     .trigger(processingTime="10 seconds")
+     .start())
 q.awaitTermination()
