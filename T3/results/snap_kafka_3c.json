@@ -1,50 +1,50 @@
 {
-  "path": "/snapshots/1781748976_kafka_3c.json",
+  "path": "/snapshots/1781763406_kafka_3c.json",
   "summary": {
-    "elapsed_sec": 43.1,
+    "elapsed_sec": 48.53,
     "totals": {
-      "hits": 2096,
-      "misses": 286,
+      "hits": 2117,
+      "misses": 289,
       "errors": 0,
-      "total_requests": 2382
+      "total_requests": 2406
     },
     "hit_rate": 0.8799,
     "miss_rate": 0.1201,
-    "throughput_qps_total": 55.26,
-    "throughput_qps_recent_10s": 64.0,
+    "throughput_qps_total": 49.57,
+    "throughput_qps_recent_10s": 40.7,
     "latency_ms_hit": {
-      "p50": 0.531,
-      "p95": 1.038,
-      "p99": 1.526
+      "p50": 0.657,
+      "p95": 1.251,
+      "p99": 2.032
     },
     "latency_ms_miss": {
-      "p50": 148.093,
-      "p95": 335.609,
-      "p99": 409.192
+      "p50": 139.759,
+      "p95": 329.624,
+      "p99": 406.564
     },
     "latency_ms_all": {
-      "p50": 0.559,
-      "p95": 161.723,
-      "p99": 308.531
+      "p50": 0.688,
+      "p95": 157.645,
+      "p99": 294.489
     },
-    "mean_t_cache_ms": 0.593,
-    "mean_t_db_ms": 167.696,
-    "cache_efficiency": 147.039,
+    "mean_t_cache_ms": 0.731,
+    "mean_t_db_ms": 163.941,
+    "cache_efficiency": 143.605,
     "eviction": {
       "total_evicted": 0,
       "rate_per_min": 0.0
     },
     "async_kpis": {
-      "processed_total": 2382,
+      "processed_total": 2406,
       "recovered_total": 0,
       "retried_total": 0,
       "dlq_total": 0,
-      "throughput_processed_qps_total": 55.26,
-      "throughput_processed_qps_recent_10s": 64.0,
+      "throughput_processed_qps_total": 49.57,
+      "throughput_processed_qps_recent_10s": 40.7,
       "latency_e2e_ms": {
-        "p50": 4559.001,
-        "p95": 8808.606,
-        "p99": 9244.137
+        "p50": 6841.238,
+        "p95": 9189.891,
+        "p99": 9413.793
       },
       "retry_rate": 0.0,
       "recovery_rate": null,
@@ -52,13 +52,13 @@
     },
     "cache_redis_stats": {
       "policy": "LRU",
-      "used_memory": 1254000,
+      "used_memory": 1255328,
       "used_memory_human": "1.20M",
       "maxmemory": 209715200,
-      "n_keys": 286,
+      "n_keys": 289,
       "evicted_keys": 0,
-      "keyspace_hits": 13828,
-      "keyspace_misses": 2034
+      "keyspace_hits": 6480,
+      "keyspace_misses": 1081
     },
     "queue_health": {
       "backlog_by_topic": {
@@ -66,55 +66,55 @@
         "consultas_reintentos": 0
       },
       "backlog_total": 0,
-      "peak_backlog": 399,
-      "recovery_time_sec": 29.41,
+      "peak_backlog": 402,
+      "recovery_time_sec": 24.59,
       "draining": false
     },
     "by_query": {
       "Q1": {
-        "hits": 1252,
-        "misses": 84,
-        "total": 1336,
-        "hit_rate": 0.9371,
-        "p50_ms": 0.54,
-        "p95_ms": 95.285,
-        "p99_ms": 195.809
+        "hits": 1268,
+        "misses": 85,
+        "total": 1353,
+        "hit_rate": 0.9372,
+        "p50_ms": 0.672,
+        "p95_ms": 93.89,
+        "p99_ms": 176.51
       },
       "Q2": {
-        "hits": 224,
+        "hits": 225,
         "misses": 50,
-        "total": 274,
-        "hit_rate": 0.8175,
-        "p50_ms": 0.599,
-        "p95_ms": 145.833,
-        "p99_ms": 237.122
+        "total": 275,
+        "hit_rate": 0.8182,
+        "p50_ms": 0.738,
+        "p95_ms": 143.285,
+        "p99_ms": 251.996
       },
       "Q3": {
-        "hits": 411,
+        "hits": 414,
         "misses": 61,
-        "total": 472,
-        "hit_rate": 0.8708,
-        "p50_ms": 0.567,
-        "p95_ms": 134.9,
-        "p99_ms": 283.885
+        "total": 475,
+        "hit_rate": 0.8716,
+        "p50_ms": 0.677,
+        "p95_ms": 128.524,
+        "p99_ms": 256.263
       },
       "Q4": {
         "hits": 70,
-        "misses": 62,
-        "total": 132,
-        "hit_rate": 0.5303,
-        "p50_ms": 0.958,
-        "p95_ms": 350.659,
-        "p99_ms": 411.624
+        "misses": 63,
+        "total": 133,
+        "hit_rate": 0.5263,
+        "p50_ms": 1.37,
+        "p95_ms": 341.206,
+        "p99_ms": 423.765
       },
       "Q5": {
-        "hits": 139,
-        "misses": 29,
-        "total": 168,
-        "hit_rate": 0.8274,
-        "p50_ms": 0.607,
-        "p95_ms": 161.295,
-        "p99_ms": 273.095
+        "hits": 140,
+        "misses": 30,
+        "total": 170,
+        "hit_rate": 0.8235,
+        "p50_ms": 0.714,
+        "p95_ms": 161.182,
+        "p99_ms": 277.297
       }
     },
     "label": "kafka_3c",
@@ -128,6 +128,6 @@
       "seed": 42,
       "label": "kafka_3c"
     },
-    "snapshot_ts": 1781748976.3145912
+    "snapshot_ts": 1781763406.940417
   }
 }

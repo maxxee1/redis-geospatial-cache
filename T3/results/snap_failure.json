@@ -1,64 +1,64 @@
 {
-  "path": "/snapshots/1781749073_failure.json",
+  "path": "/snapshots/1781763510_failure.json",
   "summary": {
-    "elapsed_sec": 76.17,
+    "elapsed_sec": 81.43,
     "totals": {
-      "hits": 3160,
-      "misses": 329,
-      "errors": 37,
-      "total_requests": 3489
+      "hits": 3288,
+      "misses": 335,
+      "errors": 35,
+      "total_requests": 3623
     },
-    "hit_rate": 0.9057,
-    "miss_rate": 0.0943,
-    "throughput_qps_total": 45.81,
-    "throughput_qps_recent_10s": 64.3,
+    "hit_rate": 0.9075,
+    "miss_rate": 0.0925,
+    "throughput_qps_total": 44.49,
+    "throughput_qps_recent_10s": 48.5,
     "latency_ms_hit": {
-      "p50": 0.537,
-      "p95": 1.025,
-      "p99": 1.388
+      "p50": 0.599,
+      "p95": 1.115,
+      "p99": 1.539
     },
     "latency_ms_miss": {
-      "p50": 119.377,
-      "p95": 302.924,
-      "p99": 400.305
+      "p50": 119.543,
+      "p95": 310.395,
+      "p99": 407.469
     },
     "latency_ms_all": {
-      "p50": 0.56,
-      "p95": 113.312,
-      "p99": 267.832
+      "p50": 0.622,
+      "p95": 114.756,
+      "p99": 266.394
     },
-    "mean_t_cache_ms": 0.595,
-    "mean_t_db_ms": 146.02,
-    "cache_efficiency": 131.712,
+    "mean_t_cache_ms": 0.657,
+    "mean_t_db_ms": 147.983,
+    "cache_efficiency": 133.704,
     "eviction": {
       "total_evicted": 0,
       "rate_per_min": 0.0
     },
     "async_kpis": {
-      "processed_total": 3489,
-      "recovered_total": 29,
-      "retried_total": 37,
-      "dlq_total": 2,
-      "throughput_processed_qps_total": 45.81,
-      "throughput_processed_qps_recent_10s": 64.3,
+      "processed_total": 3623,
+      "recovered_total": 31,
+      "retried_total": 35,
+      "dlq_total": 1,
+      "throughput_processed_qps_total": 44.49,
+      "throughput_processed_qps_recent_10s": 48.6,
       "latency_e2e_ms": {
-        "p50": 22420.769,
-        "p95": 27221.228,
-        "p99": 27459.289
+        "p50": 23296.183,
+        "p95": 27920.517,
+        "p99": 29732.115
       },
-      "retry_rate": 0.0106,
-      "recovery_rate": 0.9355,
-      "dlq_rate": 0.0006
+      "retry_rate": 0.0097,
+      "recovery_rate": 0.9688,
+      "dlq_rate": 0.0003
     },
     "cache_redis_stats": {
       "policy": "LRU",
-      "used_memory": 1267520,
+      "used_memory": 1269296,
       "used_memory_human": "1.21M",
       "maxmemory": 209715200,
-      "n_keys": 329,
+      "n_keys": 335,
       "evicted_keys": 0,
-      "keyspace_hits": 16988,
-      "keyspace_misses": 2400
+      "keyspace_hits": 9768,
+      "keyspace_misses": 1451
     },
     "queue_health": {
       "backlog_by_topic": {
@@ -66,55 +66,55 @@
         "consultas_reintentos": 0
       },
       "backlog_total": 0,
-      "peak_backlog": 1351,
-      "recovery_time_sec": 33.42,
+      "peak_backlog": 1395,
+      "recovery_time_sec": 35.07,
       "draining": false
     },
     "by_query": {
       "Q1": {
-        "hits": 1905,
-        "misses": 95,
-        "total": 2000,
-        "hit_rate": 0.9525,
-        "p50_ms": 0.539,
-        "p95_ms": 1.762,
-        "p99_ms": 153.031
+        "hits": 1987,
+        "misses": 96,
+        "total": 2083,
+        "hit_rate": 0.9539,
+        "p50_ms": 0.605,
+        "p95_ms": 1.811,
+        "p99_ms": 158.473
       },
       "Q2": {
-        "hits": 336,
+        "hits": 352,
         "misses": 54,
-        "total": 390,
-        "hit_rate": 0.8615,
-        "p50_ms": 0.556,
-        "p95_ms": 106.565,
-        "p99_ms": 173.702
+        "total": 406,
+        "hit_rate": 0.867,
+        "p50_ms": 0.642,
+        "p95_ms": 110.132,
+        "p99_ms": 181.799
       },
       "Q3": {
-        "hits": 601,
-        "misses": 70,
-        "total": 671,
-        "hit_rate": 0.8957,
-        "p50_ms": 0.588,
-        "p95_ms": 100.787,
-        "p99_ms": 210.508
+        "hits": 617,
+        "misses": 72,
+        "total": 689,
+        "hit_rate": 0.8955,
+        "p50_ms": 0.634,
+        "p95_ms": 100.567,
+        "p99_ms": 222.919
       },
       "Q4": {
-        "hits": 100,
-        "misses": 76,
-        "total": 176,
-        "hit_rate": 0.5682,
-        "p50_ms": 0.893,
-        "p95_ms": 322.589,
-        "p99_ms": 417.725
+        "hits": 106,
+        "misses": 79,
+        "total": 185,
+        "hit_rate": 0.573,
+        "p50_ms": 0.84,
+        "p95_ms": 321.857,
+        "p99_ms": 428.057
       },
       "Q5": {
-        "hits": 218,
+        "hits": 226,
         "misses": 34,
-        "total": 252,
-        "hit_rate": 0.8651,
-        "p50_ms": 0.599,
-        "p95_ms": 126.584,
-        "p99_ms": 254.66
+        "total": 260,
+        "hit_rate": 0.8692,
+        "p50_ms": 0.639,
+        "p95_ms": 120.86,
+        "p99_ms": 183.33
       }
     },
     "label": "failure",
@@ -129,6 +129,6 @@
       "label": "failure",
       "fail_window_sec": 18
     },
-    "snapshot_ts": 1781749073.0181808
+    "snapshot_ts": 1781763510.1997025
   }
 }
