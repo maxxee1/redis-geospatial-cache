@@ -169,7 +169,15 @@ services:
       depends_on:
         kafka:
           condition: service_healthy
+        elasticsearch:
+          condition: service_healthy
       restart: on-failure
+      environment:
+        KAFKA_BOOTSTRAP: kafka:9092
+        TOPIC_METRICS: metrics-topic
+        ES_HOST: elasticsearch
+        ES_PORT: "9200"
+        ES_INDEX: spark-metrics
       volumes:
         - ./spark/jobs:/opt/spark/jobs
       entrypoint:
@@ -207,4 +215,4 @@ services:
       - "5601:5601"
     depends_on:
       elasticsearch:
-        condition: service_healthy
+        condition: service_healthy 
